@@ -42,6 +42,8 @@ npm start
 
 ## Future Work - Problem 3
 
+- Improve styling and responsive design
+
 We want to store game results in a database.
 
 - create a simple backend server (using a simple generator provided by your IDE is fine)
