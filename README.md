@@ -18,6 +18,11 @@ This project implements a complete basic game of Tic-Tac-Toe using React and Typ
 3. Board Color
    - Provides input to change the board color.
 
+## Game Screenshots
+
+<img  alt="gameF" src="./game.png" width="" height="" />
+
+
 ## Installation
 
 1. Make sure you have **node** installed
@@ -39,6 +44,18 @@ npm install
 ```bash
 npm start
 ```
+
+## Running the Tests
+
+You can run the unit tests using:
+
+```bash
+npm test
+```
+
+### Test Screenshots
+
+<img  alt="test" src="./test.png" width="" height="" />
 
 ## Future Work - Problem 3
 
