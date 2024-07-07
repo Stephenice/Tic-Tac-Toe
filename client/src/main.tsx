@@ -10,9 +10,7 @@ const boardSizeDefault = 3;
 
 export const Main = () => {
   const [boardSize, setBoardSize] = useState(boardSizeDefault);
-  const [board, setBoard] = useState<(XorO | undefined)[][]>(
-    Array(boardSize).fill(Array(boardSize).fill(undefined))
-  );
+  const [board, setBoard] = useState<(XorO | undefined)[][]>(Array(boardSize).fill(Array(boardSize).fill(undefined)));
   const [currentPlayer, setCurrentPlayer] = useState<XorO>("X");
   const [winner, setWinner] = useState<XorO | undefined>(undefined);
   const [gameOver, setGameOver] = useState(false);
