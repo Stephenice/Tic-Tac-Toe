@@ -1,12 +1,5 @@
 import { XorO } from '../types';
 
-/**
- * Checks if there is a winner on the given tic-tac-toe board.
- *
- * @param {(XorO | undefined)[][]} board - The tic-tac-toe board to check for a winner.
- * @return {XorO | undefined} - The winning player ('X' or 'O') if there is a winner, undefined otherwise.
- */
-
 export const checkWinner = (board: (XorO | undefined)[][]): XorO | undefined => {
     const size = board.length;
     // Check rows and columns

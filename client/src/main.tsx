@@ -3,13 +3,16 @@ import { XorO } from "./types";
 import { checkWinner } from "./utils/checkWinner";
 import Board from "./components/Board";
 import BoardColor from "./components/BoardColor";
+import { updateBoard } from "./utils/updateBoard";
 
 const colorDefault = "#000000";
 const boardSizeDefault = 3;
 
 export const Main = () => {
   const [boardSize, setBoardSize] = useState(boardSizeDefault);
-  const [board, setBoard] = useState<(XorO | undefined)[][]>( Array(boardSize).fill(Array(boardSize).fill(undefined)));
+  const [board, setBoard] = useState<(XorO | undefined)[][]>(
+    Array(boardSize).fill(Array(boardSize).fill(undefined))
+  );
   const [currentPlayer, setCurrentPlayer] = useState<XorO>("X");
   const [winner, setWinner] = useState<XorO | undefined>(undefined);
   const [gameOver, setGameOver] = useState(false);
@@ -18,17 +21,19 @@ export const Main = () => {
   const handleClick = (row: number, col: number) => {
     if (board[row][col] !== undefined || gameOver) return;
 
-    const newBoard = board.map((r, i) => r.map((c, j) => (i === row && j === col ? currentPlayer : c)));
+    const newBoard = updateBoard(board, row, col, currentPlayer);
     setBoard(newBoard);
 
     const winner = checkWinner(newBoard);
     if (winner) {
       setWinner(winner);
       setGameOver(true);
-    } else if (newBoard.every(row => row.every(cell => cell !== undefined))) {
+    } else if (
+      newBoard.every((row) => row.every((cell) => cell !== undefined))
+    ) {
       setGameOver(true);
     } else {
-      setCurrentPlayer(currentPlayer === 'X' ? 'O' : 'X');
+      setCurrentPlayer(currentPlayer === "X" ? "O" : "X");
     }
   };
 
@@ -50,16 +55,16 @@ export const Main = () => {
   };
 
   return (
-    <div className='flex flex-col mt-10 items-center gap-10'>
-
-      <h1 className='font-bold text-2xl'>Tic Tac Toe</h1>
+    <div className="flex flex-col mt-10 items-center gap-10">
+      <h1 className="font-bold text-2xl">Tic Tac Toe</h1>
 
       <section className="flex gap-8 p-2">
-
-      <div className='board'>
-    <Board board={board} boardColor={boardColor} handleClick={handleClick} />
-         
-
+        <div className="board">
+          <Board
+            board={board}
+            boardColor={boardColor}
+            handleClick={handleClick}
+          />
         </div>
 
         <aside className="flex flex-col items-center gap-2 pl-2 border-l-2 border-dashed border-l-black">
